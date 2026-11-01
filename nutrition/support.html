@@ -6,28 +6,82 @@
 <title>Nutrition: Vitamins &amp; Minerals — Support</title>
 <!-- Must agree with NutritionApp/Resources/PrivacyInfo.xcprivacy and the App Store privacy label. -->
 <style>
-  :root { --bg: #FAF8F3; --ink: #17232B; --soft: #5F6B73; --accent: #3F6884; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #12171A; --ink: #E6ECEF; --soft: #9AA6AD; --accent: #9BBFD9; } }
+  :root { --bg: #FAF8F3; --ink: #17232B; --soft: #5F6B73; --accent: #3F6884; --field: #FFFFFF; --line: #D9D4CA; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #12171A; --ink: #E6ECEF; --soft: #9AA6AD; --accent: #9BBFD9; --field: #1B2226; --line: #2E383E; } }
   body { margin: 0; background: var(--bg); color: var(--ink);
          font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
   main { max-width: 680px; margin: 0 auto; padding: 32px 16px 64px; }
   h1 { font-size: 28px; margin: 0 0 4px; }
-  h2 { font-size: 19px; margin: 32px 0 8px; }
+  h2 { font-size: 19px; margin: 36px 0 8px; }
   p, li { margin: 0 0 10px; }
   .muted { color: var(--soft); font-size: 14px; }
   a { color: var(--accent); }
+  form { display: grid; gap: 14px; margin-top: 12px; }
+  label { display: grid; gap: 4px; font-weight: 600; font-size: 15px; }
+  label span { font-weight: 400; color: var(--soft); font-size: 13px; }
+  input, select, textarea { font: inherit; color: var(--ink); background: var(--field);
+         border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; width: 100%; box-sizing: border-box; }
+  textarea { min-height: 140px; resize: vertical; }
+  button { font: inherit; font-weight: 600; color: #fff; background: var(--accent); border: 0;
+           border-radius: 10px; padding: 12px 18px; cursor: pointer; justify-self: start; }
+  @media (prefers-color-scheme: dark) { button { color: #12171A; } }
 </style>
 </head>
 <body>
 <main>
-<h1>Nutrition: Vitamins &amp; Minerals — Support</h1>
-<p class="muted">Questions, bugs, a wrong food match or a bad shared barcode product</p>
-<p>Email <a href="mailto:tanya.sergienko.official@gmail.com">tanya.sergienko.official@gmail.com</a> — include the food or barcode and what you expected. Replies usually within a few days.</p>
-<h2>Common questions</h2>
-<p><strong>Where is my data?</strong> On your iPhone only. Deleting the app deletes it. See the <a href="privacy.html">privacy policy</a>.</p>
-<p><strong>Can I stop sharing barcode foods?</strong> Yes — switch it off in the app's settings.</p>
-<p><strong>Is this medical advice?</strong> No. The app shows educational information from public health sources.</p>
+<h1>Hi, I'm Tanya</h1>
+<p class="muted">Nutrition: Vitamins &amp; Minerals — Support</p>
+<p>Thank you so much for using Nutrition. I made it to help people eat well and feel good, and I truly care about everyone who uses it.</p>
+<p>If something isn't working, a food looks wrong, or you just want to say hello, please write to me. There are no silly questions. I read every message myself and reply as soon as I can, usually within a few days.</p>
+
+<h2>Write to me</h2>
+<p>Fill this in and tap Send. Your email app will open with your message ready, so you can check it before it goes.</p>
+<form id="contact">
+  <label>What's it about?
+    <select name="topic">
+      <option>Something isn't working</option>
+      <option>A food or barcode looks wrong</option>
+      <option>I have a question</option>
+      <option>I have an idea</option>
+      <option>Just saying hello</option>
+    </select>
+  </label>
+  <label>Your name <span>Optional, so I know who I'm talking to</span>
+    <input name="name" autocomplete="name">
+  </label>
+  <label>Your message
+    <textarea name="message" required placeholder="Tell me what happened, or what's on your mind. If it's about a food, the name or barcode helps a lot."></textarea>
+  </label>
+  <label>Your iPhone model <span>Optional, it helps with bugs</span>
+    <input name="device" placeholder="e.g. iPhone 15">
+  </label>
+  <button type="submit">Send</button>
+</form>
+<p class="muted">Rather write directly? Email <a href="mailto:tanya.sergienko.official@gmail.com">tanya.sergienko.official@gmail.com</a>. A screenshot is always welcome.</p>
+
+<h2>Quick answers</h2>
+<p><strong>Where is my data?</strong> On your iPhone only. It's yours, and it's never sold. Deleting the app deletes it. See the <a href="privacy.html">privacy policy</a>.</p>
+<p><strong>Can I stop sharing barcode foods?</strong> Of course. Switch it off in the app's settings, anytime.</p>
+<p><strong>A barcode wasn't found.</strong> No problem. Snap the nutrition label instead, or type the food in by hand.</p>
+<p><strong>The amounts look wrong.</strong> You can always change the grams before saving, and fix any food after it's logged. Nothing is final.</p>
+<p><strong>My weight jumped overnight. Did I do something wrong?</strong> Not at all. Water, salt and sleep move everyone's weight a little every day. That's why the app shows your weekly trend.</p>
+<p><strong>Is this medical advice?</strong> No. The app shows educational information from public health sources. For medical questions, please talk to your doctor.</p>
+
+<p style="margin-top:32px">Thank you for being here. Every small step counts. 💛</p>
 <p class="muted">Food data: USDA FoodData Central. Product data from Open Food Facts (ODbL).</p>
 </main>
+<script>
+  document.getElementById('contact').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target.elements; // .elements: form.name would be the form's own name, not the field
+    var name = f.name.value.trim();
+    var body = (name ? 'Hi Tanya, it\'s ' + name + '.' : 'Hi Tanya,') + '\n\n' +
+               f.message.value.trim() + '\n\n' +
+               (f.device.value.trim() ? 'iPhone: ' + f.device.value.trim() + '\n' : '');
+    location.href = 'mailto:tanya.sergienko.official@gmail.com' +
+      '?subject=' + encodeURIComponent('Nutrition — ' + f.topic.value) +
+      '&body=' + encodeURIComponent(body);
+  });
+</script>
 </body>
 </html>
