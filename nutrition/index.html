@@ -19,14 +19,32 @@
   .muted { color: var(--soft); font-size: 14px; }
   a { color: var(--accent); }
   footer { margin-top: 48px; }
+  .store { display: inline-block; margin: 8px 0 0; padding: 10px 18px; border-radius: 12px;
+           background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 600; }
+  .shots { display: flex; gap: 20px; max-width: 960px; margin: 32px auto 8px; padding: 0 16px;
+           box-sizing: border-box; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .shots img { flex: 1 1 0; min-width: 0; width: 100%; height: auto; border-radius: 22px;
+               scroll-snap-align: center; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+  @media (max-width: 700px) {
+    .shots img { flex: 0 0 78%; }
+  }
 </style>
 </head>
 <body>
-<main>
+<main style="padding-bottom: 0">
 <p class="muted">Nutrition: Vitamins &amp; Minerals</p>
 <h1>Eat well. Feel strong.</h1>
 <p class="lead">No counting every crumb and no guilt. Just see what your food gives you, and build a body you feel good in, one meal at a time.</p>
+<p><a class="store" href="https://apps.apple.com/pt/app/nutrition-vitamins-minerals/id6828472941?l=en-GB" target="_blank" rel="noopener">Download on the App Store</a></p>
+</main>
 
+<div class="shots">
+  <img src="img/screen-1.jpg" width="900" height="1956" alt="Home screen: protein ring, fiber, added sugar and meals for the day">
+  <img src="img/screen-2.jpg" width="900" height="1956" alt="Meal detail: each food labelled nutrient dense or high in sugar, salt or saturated fat">
+  <img src="img/screen-3.jpg" width="900" height="1956" alt="Advice screen: low on fiber, foods to eat more of, with research sources">
+</div>
+
+<main style="padding-top: 0">
 <h2>Made for how you want to feel</h2>
 <ul>
   <li><strong>Protein first.</strong> Protein is what keeps you full and helps you look toned rather than just smaller, so it sits at the top of your day.</li>
@@ -53,7 +71,7 @@
 
 <h2>Start today</h2>
 <p>You don't need a perfect diet. You need a little more protein, a few more colors on your plate, and a way to see you're getting there.</p>
-<p><strong>Download Nutrition on the App Store.</strong></p>
+<p><strong>Download Nutrition on the App Store (<a href="https://apps.apple.com/pt/app/nutrition-vitamins-minerals/id6828472941?l=en-GB" target="_blank" rel="noopener">here</a>).</strong></p>
 
 <footer>
 <p class="muted"><a href="support.html">Support</a> · <a href="privacy.html">Privacy policy</a></p>
